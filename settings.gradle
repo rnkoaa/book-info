@@ -1,0 +1,6 @@
+rootProject.name = 'book-info'
+include 'data-processor'
+include 'book-details'
+include 'book-service'
+include 'goodreads-source-processor'
+

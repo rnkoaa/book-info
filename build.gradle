@@ -1,0 +1,69 @@
+plugins {
+//	id 'org.springframework.boot' version '2.2.5.RELEASE'
+//    id "io.freefair.lombok" version "3.8.0"
+    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+    id 'java'
+    id 'idea'
+}
+
+repositories {
+    mavenLocal()
+    maven { url "https://binrepo.target.com/artifactory/platform" }
+    maven { url "https://plugins.gradle.org/m2" }
+    mavenCentral()
+}
+
+group = 'com.book.info'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+subprojects {
+
+    apply plugin: 'java'
+    apply plugin: 'io.spring.dependency-management'
+    apply plugin: 'java-library'
+//    apply plugin: "io.freefair.lombok"
+    apply plugin: 'idea'
+
+    repositories {
+        mavenLocal()
+        maven { url "https://binrepo.target.com/artifactory/platform" }
+        maven { url "https://plugins.gradle.org/m2" }
+        mavenCentral()
+    }
+
+    configurations {
+        compileOnly {
+            extendsFrom annotationProcessor
+        }
+    }
+
+    dependencies {
+        compile("javax.xml.bind:jaxb-api:2.3.1")
+
+        compileOnly("org.projectlombok:lombok:$lombokVersion")
+        annotationProcessor("org.projectlombok:lombok:$lombokVersion")
+
+        testImplementation(
+                "org.junit.jupiter:junit-jupiter:$junitVersion",
+                "org.assertj:assertj-core:$assertjVersion"
+        )
+    }
+
+    configurations {
+        developmentOnly
+
+        runtimeClasspath {
+            extendsFrom developmentOnly
+        }
+
+        compileOnly {
+            extendsFrom annotationProcessor
+        }
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+}
+
