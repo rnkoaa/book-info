@@ -3,4 +3,7 @@ include 'data-processor'
 include 'book-details'
 include 'book-service'
 include 'goodreads-source-processor'
+include 'review-service'
+include 'common-lib'
+include 'common-web'
 

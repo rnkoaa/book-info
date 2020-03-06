@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "review.database.url",
+      "type": "java.lang.String",
+      "description": "Description for review.database.url."
+  }
+] }
