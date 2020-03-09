@@ -78,7 +78,6 @@ public class GoodReadsBook {
         return "";
     }
 
-
     @Data
     @JsonIgnoreProperties(ignoreUnknown = true)
     @Builder(toBuilder = true)

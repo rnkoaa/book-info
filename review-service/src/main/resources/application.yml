@@ -1,5 +1,5 @@
 review:
   database:
-    url: jdbc:sqlite:data/book-reviews.db
+    url: jdbc:sqlite:data/book-info.db
 server:
-  port: 0
+  port: 9090

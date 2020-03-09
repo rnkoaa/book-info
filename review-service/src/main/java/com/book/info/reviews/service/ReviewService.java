@@ -7,7 +7,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.stream.Collectors;
-import org.apache.commons.lang3.math.NumberUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -46,5 +45,10 @@ public class ReviewService {
             .reviewText(goodReadsReview.getReviewText())
             .createdAt(goodReadsReview.getDateAdded())
             .build();
+    }
+
+    public List<ReviewDto> findReviewsByBook(int bookId, int page, int limit) {
+//        Pageable pageableRequest = PageRequest.of(page, limit);
+        return findReviewsByBook(bookId);
     }
 }

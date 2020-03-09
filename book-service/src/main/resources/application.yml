@@ -1,2 +1,11 @@
+book:
+  database:
+    url: jdbc:sqlite:data/book-info.db
 server:
-  port: 0
+  port: 9095
+#spring:
+#  jackson:
+#    default-property-inclusion: non_null
+#spring:
+#  jackson:
+#    default-property-inclusion: non_null
