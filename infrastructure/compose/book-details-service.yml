@@ -1,0 +1,6 @@
+book:
+  info:
+    url: http://book-service:8080/
+review:
+  info:
+    url: http://review-service:8080/

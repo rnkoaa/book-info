@@ -1,0 +1,13 @@
+{
+  "properties": [
+    {
+      "name": "book.info.url",
+      "type": "java.lang.String",
+      "description": "Description for book.info.url."
+    },
+    {
+      "name": "review.info.url",
+      "type": "java.lang.String",
+      "description": "Description for review.info.url."
+    }
+  ] }

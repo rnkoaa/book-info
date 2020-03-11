@@ -1,7 +1,7 @@
 package com.book.info.reviews.controller;
 
 import com.book.info.rest.ListApiResponse;
-import com.book.info.reviews.ReviewDto;
+import com.book.info.model.ReviewDto;
 import com.book.info.reviews.service.ReviewService;
 import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;

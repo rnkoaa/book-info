@@ -1,0 +1,58 @@
+version: '3.7'
+
+services:
+  book-service:
+    image: rnkoaa/book-service:latest
+    container_name: book-service
+    environment:
+      CONTAINER_MEM_MB: 256
+    ports:
+      - 9095:8080
+    volumes:
+      - ./book-service.yml:/application/config/application.yml
+      - ./book-info.db:/application/data/book-info.db
+    networks:
+      - book_info
+    healthcheck:
+      test: "curl localhost:8080/actuator/health"
+      interval: "60s"
+      timeout: "3s"
+      start_period: "5s"
+      retries: 3
+  book-details-service:
+    image: rnkoaa/book-details-service:latest
+    container_name: book-details-service
+    environment:
+      CONTAINER_MEM_MB: 256
+    ports:
+      - 8080:8080
+    volumes:
+      - ./book-details-service.yml:/application/config/application.yml
+    networks:
+      - book_info
+    healthcheck:
+      test: "curl localhost:8080/actuator/health"
+      interval: "60s"
+      timeout: "3s"
+      start_period: "5s"
+      retries: 3
+  review-service:
+    image: rnkoaa/review-service:latest
+    container_name: review-service
+    environment:
+      CONTAINER_MEM_MB: 256
+    ports:
+      - 9090:8080
+    volumes:
+      - ./review-service.yml:/application/config/application.yml
+      - ./book-info.db:/application/data/book-info.db
+    networks:
+      - book_info
+    healthcheck:
+      test: "curl localhost:8080/actuator/health"
+      interval: "60s"
+      timeout: "3s"
+      start_period: "5s"
+      retries: 3
+networks:
+  book_info:

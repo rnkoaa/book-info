@@ -1,0 +1,19 @@
+# https://taskfile.dev
+
+version: '2'
+
+vars:
+  GREETING: Hello, World!
+
+tasks:
+  default:
+    cmds:
+      - ./gradlew clean build
+    silent: true
+  docker-images:
+    cmds:
+      - ./gradlew clean build
+      - docker build -t rnkoaa/book-details-service book-details/
+      - docker build -t rnkoaa/book-service book-service/
+      - docker build -t rnkoaa/review-service review-service/
+    silent: true

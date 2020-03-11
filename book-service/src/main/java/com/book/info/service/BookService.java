@@ -1,11 +1,12 @@
 package com.book.info.service;
 
-import com.book.info.AuthorDto;
-import com.book.info.AuthorDto.AuthorDtoBuilder;
-import com.book.info.BookDto;
-import com.book.info.BookDto.BookDtoBuilder;
+
 import com.book.info.GoodReadsBook;
 import com.book.info.GoodReadsBook.Author;
+import com.book.info.model.AuthorDto;
+import com.book.info.model.AuthorDto.AuthorDtoBuilder;
+import com.book.info.model.BookDto;
+import com.book.info.model.BookDto.BookDtoBuilder;
 import com.book.info.repository.BookRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import java.sql.SQLException;
@@ -39,8 +40,8 @@ public class BookService {
     }
 
     private Function<GoodReadsBook, BookDto> mapper = goodReadsBook -> {
-        BookDtoBuilder builder = BookDto.builder();
-        builder.averageRating(NumberUtils.toDouble(goodReadsBook.getAverageRating()))
+        BookDtoBuilder bookDtoBuilder = BookDto.builder();
+        bookDtoBuilder.averageRating(NumberUtils.toDouble(goodReadsBook.getAverageRating()))
             .id(NumberUtils.toInt(goodReadsBook.getId()))
             .countryCode(goodReadsBook.getCountryCode())
             .languageCode(goodReadsBook.getLanguageCode())
@@ -75,9 +76,9 @@ public class BookService {
                     return authorDtoBuilder.build();
                 })
                 .collect(Collectors.toList());
-            builder.authors(authorDtos);
+            bookDtoBuilder.authors(authorDtos);
         }
-        return builder.build();
+        return bookDtoBuilder.build();
     };
 
     public List<BookDto> find() {

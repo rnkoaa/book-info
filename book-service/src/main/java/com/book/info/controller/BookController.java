@@ -1,6 +1,6 @@
 package com.book.info.controller;
 
-import com.book.info.BookDto;
+import com.book.info.model.BookDto;
 import com.book.info.service.BookService;
 import java.util.List;
 import java.util.Optional;

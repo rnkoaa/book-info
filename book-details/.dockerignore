@@ -1,0 +1,4 @@
+build.gradle
+src/
+build/
+!build/libs/book-details*.jar

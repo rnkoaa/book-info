@@ -1,0 +1,6 @@
+book:
+  info:
+    url: http://localhost:9095/
+review:
+  info:
+    url: http://localhost:9090/

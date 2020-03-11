@@ -1,13 +1,47 @@
 plugins {
+    id 'org.springframework.boot' version '2.2.5.RELEASE'
+    id 'io.spring.dependency-management'
     id 'java'
 }
 
 group 'com.book.info'
 version '0.0.1-SNAPSHOT'
 
+configurations {
+    developmentOnly
+    runtimeClasspath {
+        extendsFrom developmentOnly
+    }
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
 repositories {
+    mavenLocal()
+    maven { url "https://binrepo.target.com/artifactory/platform" }
+    maven { url "https://plugins.gradle.org/m2" }
     mavenCentral()
 }
 
 dependencies {
+    compile project(":data-processor")
+    compile project(":common-lib")
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+
+    implementation(
+            'com.squareup.retrofit2:retrofit:2.5.0',
+            'com.squareup.retrofit2:converter-jackson:2.5.0',
+            'com.jakewharton.retrofit:retrofit2-reactor-adapter:2.1.0',
+            'com.squareup.okhttp3:logging-interceptor:4.2.1'
+    )
+    compileOnly 'org.projectlombok:lombok'
+
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.9'
+
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'io.projectreactor:reactor-test'
 }

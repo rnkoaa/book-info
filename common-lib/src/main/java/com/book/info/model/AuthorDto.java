@@ -1,23 +1,27 @@
 package com.book.info.model;
 
+import com.book.info.model.AuthorDto.AuthorDtoBuilder;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy.SnakeCaseStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import lombok.Builder;
-import lombok.Value;
+import lombok.Data;
 
-@Value
-@Builder(toBuilder = true)
+@Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-@JsonDeserialize(builder = AuthorDto.AuthorDtoBuilder.class)
+@Builder(toBuilder = true)
+@JsonInclude(Include.NON_DEFAULT)
+@JsonDeserialize(builder = AuthorDtoBuilder.class)
 @JsonNaming(SnakeCaseStrategy.class)
 public class AuthorDto {
 
-    int id;
-    String name;
-    String role;
+    private int id;
+    private String role;
+    private String name;
 
     @JsonPOJOBuilder(withPrefix = "")
     @JsonIgnoreProperties(ignoreUnknown = true)

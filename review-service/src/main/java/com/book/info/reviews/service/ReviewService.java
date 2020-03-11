@@ -1,7 +1,7 @@
 package com.book.info.reviews.service;
 
 import com.book.info.reviews.GoodReadsReview;
-import com.book.info.reviews.ReviewDto;
+import com.book.info.model.ReviewDto;
 import com.book.info.reviews.repository.ReviewRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import java.sql.SQLException;
