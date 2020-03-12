@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: review-service-config
+  namespace: default
+data:
+  application.yml: |
+    review:
+      database:
+        url: jdbc:sqlite:/application/data/book-info.db
+    server:
+      port: 8080
+

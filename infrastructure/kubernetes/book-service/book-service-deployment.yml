@@ -1,0 +1,43 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: book-service
+  labels:
+    app: book-service
+    env: dev
+spec:
+  containers:
+  - name: book-service
+    image: rnkoaa/book-service:latest
+    ports:
+    - containerPort: 8080
+    # livenessProbe:
+    #   httpGet:
+    #     path: /actuator/health
+    #     port: 8080
+    #     initialDelaySeconds: 5
+    #     periodSeconds: 60
+    volumeMounts:
+    - name: book-service-config-volume
+      mountPath: /application/config/application.yml
+      subPath: application.yml
+    - name: db-data
+      mountPath: /application/data
+  initContainers:
+    - name: init-book-pod
+      image: busybox:1.28
+      command:
+        - wget
+        - "--no-check-certificate"
+        - "-O"
+        - "/application/data/book-info.db"
+        - "https://raw.githubusercontent.com/rnkoaa/book-info/master/data/book-info.db"
+      volumeMounts:
+        - mountPath: /application/data
+          name: db-data
+  volumes:
+    - name: book-service-config-volume
+      configMap: 
+        name: book-service-config
+    - emptyDir: {}
+      name: db-data
