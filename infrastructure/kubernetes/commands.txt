@@ -1,0 +1,39 @@
+ kubectl apply -f review-service-pv.yml
+ kubectl apply -f book-service-pv.yml
+ kubectl apply -f book-service-pvc.yml
+ kubectl apply -f review-service-pvc.yml
+ kubectl describe book-service-pv-volume
+ kubectl describe pv book-service-pv-volume
+ kubectl describe configmaps book-service
+ kubectl create -f book-service-config-map.yml
+ kubectl describe configmaps book-service
+ kubectl create -f review-service-config-map.yml
+ kubectl create -f book-details-service-config-map.yml
+ kubectl describe configmaps book-service
+ kubectl describe configmaps review-service
+ kubectl describe configmaps book-details-service
+ kubectl apply -f book-service-deployment.yml
+ kubectl logs book-service
+ kubectl apply -f book-service-deployment.yml
+ kubectl delete -f book-service-deployment.yml
+ kubectl get all
+ kubectl apply -f book-service-deployment.yml
+ kubectl describe pod book-service
+ kubectl logs book-service
+ kubectl exec -it book-service -- /bin/bash
+ kubectl apply -f review-service-deployment.yml
+ kubectl describe pod review-service
+ kubectl apply -f ../book-details-service/book-details-service-deployment.yml
+ kubectl describe pod book-details-service
+ kubectl logs book-details-service
+ kubectl apply -f book-service-svc.yml
+ kubectl service book-service
+ kubectl apply -f ../review-service/review-service-svc.yml
+ kubectl apply -f ../book-details-service/book-details-service-svc.yml
+ kubectl logs book-details-service
+ kubectl exec -it book-details-service -- /bin/bash
+ kubectl apply -f book-details-service-config-map.yml
+ kubectl delete -f book-details-service-config-map.yml
+ kubectl apply -f book-details-service-config-map.yml
+ kubectl delete -f book-details-service-deployment.yml
+ kubectl apply -f book-details-service-deployment.yml
