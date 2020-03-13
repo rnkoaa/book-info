@@ -27,3 +27,7 @@ Installing consul-connect with helm.
             enabled: true
             maxUnavailable: 1
     ```
+
+- helm install  hashicorp -f desktop-values.yaml .
+
+- helm uninstall hashicorp
