@@ -19,7 +19,6 @@ configurations {
 
 repositories {
     mavenLocal()
-    maven { url "https://binrepo.target.com/artifactory/platform" }
     maven { url "https://plugins.gradle.org/m2" }
     mavenCentral()
 }
